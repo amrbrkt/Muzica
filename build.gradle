@@ -1,13 +1,16 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.32"
+    ext.kotlinVersion = '1.4.32'
+    ext.hiltVersion = '2.33-beta'
+
     repositories {
         google()
         jcenter()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.3"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -19,6 +22,26 @@ allprojects {
         google()
         jcenter()
     }
+}
+
+ext {
+    minSdkVersion = 21
+    targetSdkVersion = 30
+    compileSdkVersion = 30
+    buildToolsVersion = "30.0.2"
+    hiltViewModelVersion = '1.0.0-alpha03'
+    activityKtxVersion= '1.3.0-alpha08'
+    liveDataKtxVersion= '2.3.1'
+    coreKotlinExtVersion= '1.5.0'
+    androidXVersion= '1.3.0'
+    constraintLayoutVersion = '2.0.4'
+    retrofitVersion = '2.9.0'
+    moshiVersion = '1.11.0'
+    okhttpInterceptorVersion = '5.0.0-alpha.2'
+    // Test
+    androidXTestVersion = '4.13.2'
+    jUnitTestVersion = '1.1.2'
+    espressoTestVersion = '3.3.0'
 }
 
 task clean(type: Delete) {
