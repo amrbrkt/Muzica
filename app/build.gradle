@@ -39,7 +39,7 @@ dependencies {
     implementation "androidx.core:core-ktx:$coreKotlinExtVersion"
     implementation "androidx.appcompat:appcompat:$androidXVersion"
     implementation "com.google.android.material:material:$androidXVersion"
-    implementation "androidx.constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     testImplementation "junit:junit:$jUnitTestVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidXTestVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoTestVersion"
