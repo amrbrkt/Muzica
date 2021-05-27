@@ -39,7 +39,9 @@ dependencies {
     implementation "androidx.core:core-ktx:$coreKotlinExtVersion"
     implementation "androidx.appcompat:appcompat:$androidXVersion"
     implementation "com.google.android.material:material:$androidXVersion"
+    implementation "androidx.legacy:legacy-support-v4:$androidXLegacySupportVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     testImplementation "junit:junit:$jUnitTestVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidXTestVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoTestVersion"
@@ -49,6 +51,10 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     implementation "androidx.activity:activity-ktx:$activityKtxVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$liveDataKtxVersion"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationComponentExtVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationComponentExtVersion"
+    implementation "androidx.fragment:fragment-ktx:$androidXFragmentExtVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewModelExtVersion"
 
     // Networking
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
