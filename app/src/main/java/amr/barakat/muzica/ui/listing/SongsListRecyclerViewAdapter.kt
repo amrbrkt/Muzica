@@ -1,6 +1,7 @@
 package amr.barakat.muzica.ui.listing
 
 import amr.barakat.muzica.R
+import amr.barakat.muzica.data.model.Session
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,7 @@ import amr.barakat.muzica.dummy.DummyContent.DummyItem
  * TODO: Replace the implementation with code for your data type.
  */
 class SongsListRecyclerViewAdapter(
-    private val values: List<DummyItem>
+    private val values: List<Session>
 ) : RecyclerView.Adapter<SongsListRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,8 +26,8 @@ class SongsListRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        holder.idView.text = item.name
+        holder.contentView.text = item.current_track.title
     }
 
     override fun getItemCount(): Int = values.size

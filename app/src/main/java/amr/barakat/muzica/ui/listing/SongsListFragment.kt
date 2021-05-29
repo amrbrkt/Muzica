@@ -1,6 +1,7 @@
 package amr.barakat.muzica.ui.listing
 
 import amr.barakat.muzica.R
+import amr.barakat.muzica.data.model.Session
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,12 +18,14 @@ import amr.barakat.muzica.dummy.DummyContent
 class SongsListFragment : Fragment() {
 
     private var columnCount = 2
+    private var songsList: ArrayList<Session> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
+            songsList = it.getParcelableArrayList<Session>(ARG_LIST) as ArrayList<Session>
         }
     }
 
@@ -39,7 +42,7 @@ class SongsListFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = SongsListRecyclerViewAdapter(DummyContent.ITEMS)
+                adapter = SongsListRecyclerViewAdapter(songsList)
             }
         }
         return view
@@ -49,13 +52,15 @@ class SongsListFragment : Fragment() {
 
         // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
+        const val ARG_LIST = "songs-list"
 
         // TODO: Customize parameter initialization
         @JvmStatic
-        fun newInstance(columnCount: Int) =
+        fun newInstance(columnCount: Int, list: ArrayList<Session>) =
             SongsListFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_COLUMN_COUNT, columnCount)
+                    putParcelableArrayList(ARG_LIST, list)
                 }
             }
     }
