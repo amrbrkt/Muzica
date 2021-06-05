@@ -7,5 +7,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class CurrentTrack(
     val artwork_url: String,
-    val title: String
+    var title: String
 ): Parcelable
