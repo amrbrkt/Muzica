@@ -1,4 +1,4 @@
-package amr.barakat.muzica.ui
+package amr.barakat.muzica.ui.listing
 
 import amr.barakat.muzica.data.model.Session
 import amr.barakat.muzica.data.remote.repo.Repo
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val repo: Repo) : ViewModel() {
+class SongsListViewModel @Inject constructor(private val repo: Repo) : ViewModel() {
 
     var songsPrivate = MutableLiveData<PagingData<Session>>()
     val songs: LiveData<PagingData<Session>> get() = songsPrivate

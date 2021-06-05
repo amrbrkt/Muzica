@@ -2,20 +2,15 @@ package amr.barakat.muzica.ui.listing
 
 import amr.barakat.muzica.R
 import amr.barakat.muzica.databinding.FragmentSongsListListBinding
-import amr.barakat.muzica.observe
-import amr.barakat.muzica.ui.MainViewModel
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 /**
  * A fragment representing a list of Items.
@@ -24,7 +19,7 @@ import kotlinx.coroutines.runBlocking
 class SongsListFragment : Fragment(R.layout.fragment_songs_list_list) {
 
     private var columnCount = 2
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<SongsListViewModel>()
     private var _binding: FragmentSongsListListBinding? = null
     private val binding get() = _binding!!
 
@@ -44,15 +39,19 @@ class SongsListFragment : Fragment(R.layout.fragment_songs_list_list) {
             else -> GridLayoutManager(context, columnCount)
         }
         val songsListAdapter = SongsListRecyclerViewAdapter()
+
         binding.apply {
             list.layoutManager = layoutManager
-            list.adapter = songsListAdapter
+            list.adapter = songsListAdapter.withLoadStateHeaderAndFooter(
+                header = SongsLoadStateAdapter { songsListAdapter.retry() },
+                footer = SongsLoadStateAdapter { songsListAdapter.retry() }
+            )
         }
 
         viewModel.songs.observe(viewLifecycleOwner) {
             viewModel.viewModelScope.launch {
 
-                    songsListAdapter.submitData(pagingData = it)
+                songsListAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData = it)
             }
         }
         viewModel.getSongList()
@@ -68,7 +67,6 @@ class SongsListFragment : Fragment(R.layout.fragment_songs_list_list) {
 
         // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
-        const val ARG_LIST = "songs-list"
 
         // TODO: Customize parameter initialization
         @JvmStatic

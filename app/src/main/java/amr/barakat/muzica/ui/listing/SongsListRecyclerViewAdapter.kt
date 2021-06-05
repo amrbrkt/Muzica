@@ -2,7 +2,6 @@ package amr.barakat.muzica.ui.listing
 
 import amr.barakat.muzica.R
 import amr.barakat.muzica.data.model.Session
-import amr.barakat.muzica.dummy.DummyContent.DummyItem
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +13,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class SongsListRecyclerViewAdapter :
     PagingDataAdapter<Session, SongsListRecyclerViewAdapter.ViewHolder>(dataDiffCallback) {
 

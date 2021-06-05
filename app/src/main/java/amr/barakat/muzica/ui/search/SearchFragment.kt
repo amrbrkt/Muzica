@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import amr.barakat.muzica.dummy.DummyContent
 
 /**
  * A fragment representing a list of Items.
@@ -39,7 +38,7 @@ class SearchFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = SearchResultRecyclerViewAdapter(DummyContent.ITEMS)
+                adapter = SearchResultRecyclerViewAdapter(null)
             }
         }
         return view

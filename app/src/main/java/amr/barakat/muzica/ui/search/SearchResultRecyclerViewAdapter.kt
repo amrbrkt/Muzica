@@ -1,20 +1,15 @@
 package amr.barakat.muzica.ui.search
 
 import amr.barakat.muzica.R
-import androidx.recyclerview.widget.RecyclerView
+import amr.barakat.muzica.data.model.Session
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 
-import amr.barakat.muzica.dummy.DummyContent.DummyItem
-
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class SearchResultRecyclerViewAdapter(
-    private val values: List<DummyItem>
+    private val values: List<Session>?
 ) : RecyclerView.Adapter<SearchResultRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,12 +19,10 @@ class SearchResultRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        val item = values!![position]
     }
 
-    override fun getItemCount(): Int = values.size
+    override fun getItemCount(): Int = values!!.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val idView: TextView = view.findViewById(R.id.item_number)

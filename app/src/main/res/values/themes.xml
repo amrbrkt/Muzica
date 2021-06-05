@@ -6,7 +6,7 @@
         <item name="colorPrimaryVariant">@color/primaryDarkColor</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/primaryDarkColor</item>
+        <item name="colorSecondary">@color/white</item>
         <item name="colorSecondaryVariant">@color/primaryColor</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
