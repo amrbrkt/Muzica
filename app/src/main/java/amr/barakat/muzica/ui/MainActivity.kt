@@ -45,7 +45,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showData(it: List<Session>) {
-        Toast.makeText(this, "Got ${it.size} songs", Toast.LENGTH_SHORT).show()
         Navigator.replaceFragment(
             supportFragmentManager,
             R.id.nav_host_fragment,
