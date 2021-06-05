@@ -4,5 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primaryColor">#FF363636</color>
     <color name="primaryDarkColor">#FF232323</color>
+    <color name="primaryLightColor">#FFA0A0A0</color>
 
 </resources>
