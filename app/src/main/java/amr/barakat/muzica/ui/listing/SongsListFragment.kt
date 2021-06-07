@@ -1,16 +1,17 @@
 package amr.barakat.muzica.ui.listing
 
 import amr.barakat.muzica.R
+import amr.barakat.muzica.data.model.Session
 import amr.barakat.muzica.databinding.FragmentSongsListListBinding
+import amr.barakat.muzica.observe
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.viewModelScope
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 /**
  * A fragment representing a list of Items.
@@ -34,26 +35,8 @@ class SongsListFragment : Fragment(R.layout.fragment_songs_list_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSongsListListBinding.bind(view)
-        val layoutManager = when {
-            columnCount <= 1 -> LinearLayoutManager(context)
-            else -> GridLayoutManager(context, columnCount)
-        }
-        val songsListAdapter = SongsListRecyclerViewAdapter()
 
-        binding.apply {
-            list.layoutManager = layoutManager
-            list.adapter = songsListAdapter.withLoadStateHeaderAndFooter(
-                header = SongsLoadStateAdapter { songsListAdapter.retry() },
-                footer = SongsLoadStateAdapter { songsListAdapter.retry() }
-            )
-        }
-
-        viewModel.songs.observe(viewLifecycleOwner) {
-            viewModel.viewModelScope.launch {
-
-                songsListAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData = it)
-            }
-        }
+        observe(viewModel.songs, ::showData)
         viewModel.getSongList()
     }
 
@@ -64,11 +47,8 @@ class SongsListFragment : Fragment(R.layout.fragment_songs_list_list) {
     }
 
     companion object {
-
-        // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
 
-        // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
             SongsListFragment().apply {
@@ -76,5 +56,21 @@ class SongsListFragment : Fragment(R.layout.fragment_songs_list_list) {
                     putInt(ARG_COLUMN_COUNT, columnCount)
                 }
             }
+    }
+
+    private fun showData(it: PagingData<Session>) {
+        val layoutManager = when {
+            columnCount <= 1 -> LinearLayoutManager(context)
+            else -> GridLayoutManager(context, columnCount)
+        }
+        val songsListAdapter = SongsListRecyclerViewAdapter()
+        val footerAdapter = SongsLoadStateAdapter { songsListAdapter.retry() }
+        binding.apply {
+            list.layoutManager = layoutManager
+            list.adapter = songsListAdapter.withLoadStateFooter(
+                footer = footerAdapter
+            )
+        }
+        songsListAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData = it)
     }
 }

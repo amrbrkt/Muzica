@@ -1,8 +1,8 @@
 package amr.barakat.muzica.ui
 
 import amr.barakat.muzica.R
-import amr.barakat.muzica.ui.listing.SongsListViewModel
 import amr.barakat.muzica.ui.listing.SongsListFragment
+import amr.barakat.muzica.ui.listing.SongsListViewModel
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity

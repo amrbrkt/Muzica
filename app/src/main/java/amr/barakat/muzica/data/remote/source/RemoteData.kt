@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 private const val PAGE: Int = 1
 private const val MAX_PAGES: Int = 5
-
+private const val CLIENT_SIDE_ERROR = -100
 class RemoteData @Inject constructor(
     private val serviceGenerator: ServiceGenerator,
 ) : RemoteDataSource, PagingSource<Int, Session>() {
@@ -40,7 +40,7 @@ class RemoteData @Inject constructor(
                 responseCode
             }
         } catch (e: IOException) {
-            "NETWORK_ERROR"
+            CLIENT_SIDE_ERROR
         }
     }
 

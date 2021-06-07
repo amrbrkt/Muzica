@@ -19,7 +19,6 @@ class SongsListViewModel @Inject constructor(private val repo: Repo) : ViewModel
     val songs: LiveData<PagingData<Session>> get() = songsPrivate
 
     fun getSongList() {
-//        songsPrivate.value = Resource.Loading()
         viewModelScope.launch {
             repo.requestSongsList().collect {
                 songsPrivate.value = it
