@@ -5,6 +5,7 @@ import amr.barakat.muzica.data.model.Session
 import amr.barakat.muzica.data.remote.ServiceGenerator
 import amr.barakat.muzica.data.remote.source.RemoteData
 import amr.barakat.muzica.data.remote.source.RemoteDataSource
+import amr.barakat.muzica.data.remote.source.SearchRemoteData
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -21,6 +22,13 @@ class RepoImpl @Inject constructor(
         return Pager(
             config = PagingConfig(10, 4, false),
             pagingSourceFactory = { RemoteData(ServiceGenerator()) }
+        ).flow
+    }
+
+    override suspend fun searchSongsList(query: String): Flow<PagingData<Session>> {
+        return Pager(
+            config = PagingConfig(10, 4, false),
+            pagingSourceFactory = { SearchRemoteData(ServiceGenerator(), query) }
         ).flow
     }
 }

@@ -5,5 +5,5 @@ import amr.barakat.muzica.data.model.Session
 
 
 interface RemoteDataSource {
-    suspend fun getSongsList(): Resource<List<Session>>
+    suspend fun fetch(): Resource<List<Session>>
 }

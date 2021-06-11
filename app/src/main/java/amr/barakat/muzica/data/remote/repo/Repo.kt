@@ -7,4 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface Repo {
     suspend fun requestSongsList(): Flow<PagingData<Session>>
+    suspend fun searchSongsList(query: String): Flow<PagingData<Session>>
 }
