@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Muzika</string>
+    <string name="app_name">Muzica</string>
     <string name="app_title">Discover</string>
     <string name="search_view_hint">Search</string>
     <string name="action_retry">Retry</string>
