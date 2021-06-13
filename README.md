@@ -43,3 +43,7 @@ amr.barakat.muzica              # Root Package
 ├── App                         # Application
 
 ```
+
+
+## Screenshot
+![image](https://user-images.githubusercontent.com/7738296/121814246-44f14c80-cc70-11eb-8a76-2fcd965aea6f.png)
