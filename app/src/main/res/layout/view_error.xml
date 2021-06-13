@@ -9,21 +9,22 @@
 
     <ImageView
         android:id="@+id/errorIcon"
-        android:layout_width="92dp"
-        android:layout_height="92dp"
+        android:layout_width="@dimen/error_icon_size"
+        android:contentDescription="@string/error_message"
+        android:layout_height="@dimen/error_icon_size"
         app:srcCompat="@drawable/ic_error_24" />
 
     <TextView
         android:id="@+id/errorText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="An error occurred" />
+        android:layout_margin="@dimen/dimen_16"
+        android:text="@string/error_message" />
 
     <Button
         android:id="@+id/retryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Retry" />
+        android:text="@string/action_retry" />
 
 </LinearLayout>

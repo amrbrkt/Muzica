@@ -8,11 +8,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp"
+        android:layout_width="@dimen/dimen_12"
+        android:layout_height="@dimen/dimen_12"
+        android:layout_marginStart="@dimen/dimen_4"
+        android:layout_marginTop="@dimen/dimen_2"
+        android:layout_marginBottom="@dimen/dimen_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,13 +23,12 @@
         android:id="@+id/count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginTop="@dimen/dimen_2"
+        android:layout_marginEnd="@dimen/dimen_4"
+        android:layout_marginBottom="@dimen/dimen_2"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        tools:text="5"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

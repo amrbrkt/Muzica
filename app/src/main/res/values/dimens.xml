@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_margin">16dp</dimen>
+    <dimen name="dimen_2">2dp</dimen>
+    <dimen name="dimen_4">4dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_12">12dp</dimen>
+    <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_32">32dp</dimen>
+    <dimen name="dimen_48">48dp</dimen>
+    <dimen name="dimen_64">64dp</dimen>
+    <dimen name="dimen_96">96dp</dimen>
+
+    <dimen name="collapsed_layout_height">172dp</dimen>
+    <dimen name="collapsed_layout_vertical_margin">@dimen/dimen_96</dimen>
+    <dimen name="error_icon_size">@dimen/dimen_96</dimen>
+    <dimen name="search_view_height">@dimen/dimen_48</dimen>
 </resources>

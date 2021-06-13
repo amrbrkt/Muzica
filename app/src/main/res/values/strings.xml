@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">Muzica</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="app_name">Muzika</string>
+    <string name="app_title">Discover</string>
+    <string name="search_view_hint">Search</string>
+    <string name="action_retry">Retry</string>
+    <string name="search_no_results">No Results</string>
+    <string name="error_message">An error occurred</string>
 </resources>
