@@ -14,21 +14,20 @@ import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 class RepoImpl @Inject constructor(
-    private val remoteRepo: RemoteDataSource,
-    private val ioDispatcher: CoroutineContext
-) : Repo {
+    private val serviceGenerator: ServiceGenerator,
+    private val remoteData: RemoteData) : Repo {
     override suspend fun requestSongsList(): Flow<PagingData<Session>> {
 
         return Pager(
             config = PagingConfig(10, 4, false),
-            pagingSourceFactory = { RemoteData(ServiceGenerator()) }
+            pagingSourceFactory = { remoteData }
         ).flow
     }
 
     override suspend fun searchSongsList(query: String): Flow<PagingData<Session>> {
         return Pager(
             config = PagingConfig(10, 4, false),
-            pagingSourceFactory = { SearchRemoteData(ServiceGenerator(), query) }
+            pagingSourceFactory = { SearchRemoteData(serviceGenerator, query) }
         ).flow
     }
 }

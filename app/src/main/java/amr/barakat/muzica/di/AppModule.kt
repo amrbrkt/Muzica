@@ -1,6 +1,7 @@
 package amr.barakat.muzica.di
 
 import amr.barakat.muzica.App
+import amr.barakat.muzica.data.remote.ServiceGenerator
 import android.content.Context
 import dagger.Module
 import dagger.Provides
@@ -24,5 +25,11 @@ class AppModule {
     @Singleton
     fun provideCoroutineContext(): CoroutineContext {
         return Dispatchers.IO
+    }
+
+    @Provides
+    @Singleton
+    fun provideServiceGenerator(): ServiceGenerator {
+        return ServiceGenerator()
     }
 }
